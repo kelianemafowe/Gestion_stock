@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/liste_commande.css') }}">
+    <title>Liste des commandes</title>
+</head>
+<body>
+
+    <main class="container">
+        <h1>Liste des commandes</h1>
+
+        {% if commandes %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID commande</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>ID client</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                <tr>
+                    <td>{{ commande[0] }}</td>
+                    <td>{{ commande[1] }}</td>
+                    <td>{{ commande[2] }}</td>
+                    <td>{{ commande[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Aucune commande trouvée.</p>
+        {% endif %}
+
+        <a href="/commande/nouvelle">
+            Ajouter une commande
+        </a>
+    </main>
+</body>
+</html>

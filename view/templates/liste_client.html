@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+
+    {% if clients %}
+    <!--
+        Vérifie si la variable "clients" contient des données.
+        Si la liste n'est pas vide, ce bloc est exécuté.
+    -->
+
+    <table>
+        <!-- Ligne d'en-tête du tableau -->
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Ville</th>
+            <th>Date d'inscription</th>
+        </tr>
+
+        <!--
+            Boucle sur chaque client contenu dans la liste "clients".
+            À chaque tour, la variable "client" représente un seul client.
+        -->
+        <p>Nombre de clients : {{ clients|length }}</p>
+        {% for client in clients %}
+        <tr>
+            <!-- Affiche le nom du client -->
+            <td>{{ client[0] }}</td>
+            <!-- Affiche l'adresse email -->
+            <td>{{ client[1] }}</td>
+
+            <!-- Affiche la ville -->
+            <td>{{ client[2] }}</td>
+
+            <!-- Affiche la date d'inscription -->
+            <td>{{ client[3] }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Fin de la boucle -->
+    </table>
+    {% else %}
+    <!-- Ce message s'affiche si la liste "clients" est vide -->
+    <p>Aucun client enregistré.</p>
+    {% endif %}
+    <!-- Fin de la condition --> 
+</body>
+</html>
